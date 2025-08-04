@@ -158,9 +158,6 @@ public class JobSearchUtils {
             String botToken = props.getProperty("botToken");
             String chatId = props.getProperty("chatId");
 
-            // Replace with your token and chat ID
-//            String botToken = "7985793692:AAERYd489Lof7o7JUBvxzjNc87XALfO2nk4";
-//            String chatId = "803?1102721";
             sendToTelegram(matchedJobs, botToken, chatId);
         } else {
             System.out.println("No matching jobs found.");
