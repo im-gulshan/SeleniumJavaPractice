@@ -1,0 +1,98 @@
+package MainUtilities.ApnaJobSearch;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+import java.util.Set;
+
+public class JobSearchScraper {
+    WebDriver driver;
+    JobSearchUtils jobSearchUtils;
+
+    @BeforeMethod
+    public void setup(){
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://apna.co/");
+        jobSearchUtils = new JobSearchUtils(driver);
+    }
+
+    private String loadResume() throws IOException {
+        return new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get("path/to/resume.txt")));
+    }
+
+
+    @Test
+    public void searchJob() throws Exception{
+        // step 1: close the android app download
+        WebElement appNudge = driver.findElement(By.xpath("//button[@aria-label='close web to app nudge']"));
+        appNudge.click();
+
+        // step 2 : Search SDET jobs
+        WebElement searchJob = driver.findElement(By.xpath("//input[contains(@placeholder, 'Search jobs by')]"));
+        searchJob.sendKeys("SDET");
+
+        // step 3 : select first option after searching SDET
+        List<WebElement> searchResult = driver.findElements(By.xpath("//div[@id='js-navigation-parent']/div"));
+        jobSearchUtils.clickElementAtIndex(searchResult, 0);
+
+        // step 4: click on exprience
+        WebElement yourExperience = driver.findElement(By.xpath("//div[contains(@data-testid, 'search-experience-input')]"));
+        yourExperience.click();
+
+        // Step 4 : select 4 year as exprience
+        Thread.sleep(1000);
+        List<WebElement> allExpElement = driver.findElements(By.xpath("//div[@class='w-full']/div"));
+        jobSearchUtils.clickElementByText(allExpElement, "6");
+
+        // step 5 : sear job for Delhi NCr
+        WebElement location = driver.findElement(By.xpath("//input[@placeholder='Search for an area or city']"));
+        location.sendKeys("Delhi NCR");
+
+
+        // step 6 : select delhi NCR
+        Thread.sleep(4000);
+        List<WebElement> locationSearchResult = driver.findElements(By.xpath("//div[@class='w-full overflow-hidden text-ellipsis whitespace-nowrap text-[#8C8594]']"));
+        jobSearchUtils.waitUntilElementIsClickable(locationSearchResult.get(0));
+        jobSearchUtils.clickElementByText(locationSearchResult, "Delhi-NCR");
+
+        //Step 7 : Click on Search Button
+        WebElement searchBtn = driver.findElement(By.xpath("//button[contains(@class, 'ApplyButton')]"));
+        searchBtn.click();
+
+        Thread.sleep(4000);
+        List<WebElement> jobs = driver.findElements(By.xpath("//div[contains(@class, 'JobCardList')]//p[@data-testid='job-title']"));
+        String parentWindow = driver.getWindowHandle();
+
+//      Step 8 : Print all the link and jobtitle of first page
+        for (WebElement job : jobs){
+            System.out.println(job.getText());
+            job.click();
+            Set<String> allWindows = driver.getWindowHandles();
+            for (String window : allWindows){
+                if (!window.equals(parentWindow)){
+                    driver.switchTo().window(window);
+                    System.out.println(driver.getCurrentUrl());
+                    driver.close();
+                    break;
+                }
+            }
+            driver.switchTo().window(parentWindow);
+        }
+
+        Thread.sleep(6000);
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
+    }
+}
