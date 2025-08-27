@@ -1,4 +1,4 @@
-package MainUtilities;
+package MainUtilities.Miscellaneous;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

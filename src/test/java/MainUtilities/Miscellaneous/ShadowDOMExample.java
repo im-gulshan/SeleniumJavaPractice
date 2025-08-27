@@ -1,9 +1,9 @@
+package MainUtilities.Miscellaneous;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import java.time.Duration;
 
 public class ShadowDOMExample {
     WebDriver driver;
@@ -32,14 +32,16 @@ public class ShadowDOMExample {
         Thread.sleep(2000);
     }
 
-    @Test(priority = 2, enabled = false)
-    public void testShadowDOM() {
+    @Test(priority = 2)
+    public void testShadowDOM() throws InterruptedException {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/shadow-dom.html");
         WebElement content = driver.findElement(By.id("content"));
 
         SearchContext shadowRoot = content.getShadowRoot();
         WebElement textElement = shadowRoot.findElement(By.cssSelector("p"));
         Assert.assertEquals(textElement.getText(), "Hello Shadow DOM", "Text does not match!");
+
+        Thread.sleep(4000);
     }
 
     @AfterClass

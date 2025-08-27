@@ -1,0 +1,11 @@
+<suite name="TestSuite">
+    <listeners>
+        <listener class-name="MainUtilities.RetryMechanism.RetryListener"/>
+    </listeners>
+    <test name="RetryTest">
+        <classes>
+            <class name="MainUtilities.RetryMechanism.SampleRetryTest"/>
+            <class name="MainUtilities.RetryMechanism.SampleRetryTest2"/>
+        </classes>
+    </test>
+</suite>

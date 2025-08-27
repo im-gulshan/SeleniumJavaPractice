@@ -1,4 +1,4 @@
-package MainUtilities;
+package MainUtilities.Miscellaneous;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,7 +14,6 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
