@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Groups Suite" thread-count="2" parallel="tests" preserve-order="true">
+
+    <!-- Tell TestNG which classes/packages to run -->
+    <packages>
+        <package name="MainUtilities.GroupsTestNG"/>
+    </packages>
+
+
+    <test name="Groups Execution">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="sanity"/>
+                <exclude name="regression"/>
+            </run>
+        </groups>
+    </test>
+
+</suite>
