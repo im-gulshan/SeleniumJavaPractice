@@ -35,7 +35,7 @@ public class GitHubChatComparator {
     }
 
     private static final String ENDPOINT = "https://models.github.ai/inference";
-    private static final String MODEL = "openai/gpt-4.1";
+    private static final String MODEL = "openai/gpt-5";
 
     public static int getMatchScore(String resume, String jobDesc) {
         ChatCompletionsClient client = new ChatCompletionsClientBuilder()
