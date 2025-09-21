@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Screenshot Suite">
+    <listeners>
+        <listener class-name="MainUtilities.TakeScreenshotOnTestFailure.ScreenshotListeners"/>
+    </listeners>
+
+    <test name="Screenshot Test">
+        <classes>
+            <class name="MainUtilities.TakeScreenshotOnTestFailure.ScreenshotTest"/>
+        </classes>
+    </test>
+</suite>
