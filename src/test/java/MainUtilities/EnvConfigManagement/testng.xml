@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Selenium Env Runner">
+
+    <!-- Change env here -->
+    <parameter name="env" value="dev"/>
+
+    <test name="Selenium Tests">
+        <classes>
+            <class name="MainUtilities.EnvConfigManagement.GoogleTest"/>
+        </classes>
+    </test>
+
+</suite>

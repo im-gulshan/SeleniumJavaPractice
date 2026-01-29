@@ -1,0 +1,11 @@
+username,password,expected
+Admin,admin123,SUCCESS
+Admin,wrongpass,FAILURE
+qa,qa123,FAILURE
+john,doe,FAILURE
+,blankpass,FAILURE
+testuser,1234,INVALID
+broken,row,
+automation,auto123,FAILURE
+guest,guest,FAILURE
+manager,admin123,FAILURE

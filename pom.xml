@@ -62,6 +62,13 @@
         <version>1.4.0</version>
       </dependency>
 
+      <!-- Apache PDFBox -->
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>2.0.31</version>
+      </dependency>
+
       <dependency>
         <groupId>com.intuit.karate</groupId>
         <artifactId>karate-junit5</artifactId>
@@ -73,7 +80,7 @@
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>4.35.0</version>
+        <version>4.39.0</version>
       </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -131,6 +138,12 @@
         <groupId>com.sun.mail</groupId>
         <artifactId>javax.mail</artifactId>
         <version>1.6.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>1.0.2</version>
       </dependency>
 
       <dependency>
