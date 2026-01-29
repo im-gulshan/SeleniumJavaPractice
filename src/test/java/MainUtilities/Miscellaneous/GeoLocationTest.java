@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v137.emulation.Emulation;
+import org.openqa.selenium.devtools.v142.emulation.Emulation;
 
 import java.util.HashMap;
 import java.util.Map;
